@@ -13,6 +13,6 @@ cd /app
 npm install
 systemctl daemon-reload
 dnf install mongodb-org-shell -y
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
+mongo --host mongodb.groboshop.online </app/schema/catalogue.js
 systemctl enable catalogue
 systemctl restart catalogue

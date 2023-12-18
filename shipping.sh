@@ -12,5 +12,5 @@ systemctl daemon-reload
 systemctl enable shipping
 systemctl restart shipping
 dnf install mysql -y
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h mysql.groboshop.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 systemctl restart shipping
