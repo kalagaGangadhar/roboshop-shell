@@ -10,6 +10,8 @@ echo ">>>>>>>>> install nodejs <<<<<<<<<<"
 dnf install nodejs -y
 echo ">>>>>>>>> add application user <<<<<<<<<<"
 useradd roboshop
+echo ">>>>>>>>> remove app directory <<<<<<<<<<"
+rm -rf /app
 echo ">>>>>>>>> making app directory <<<<<<<<<<"
 mkdir /app
 echo ">>>>>>>>> download catalogue zip file <<<<<<<<<<"
