@@ -2,7 +2,7 @@ echo ">>>>>>>>> create catalogue service <<<<<<<<<<"
 cp catalogue.service /etc/systemd/system/catalogue.service
 echo ">>>>>>>>> create mongo repo <<<<<<<<<<"
 cp mongo.repo /etc/yum.repos.d/mongo.repo
-echo ">>>>>>>>> disable nodejs <<<<<<<<<<"
+echo ">>>>>>>>> disable default nodejs <<<<<<<<<<"
 dnf module disable nodejs -y
 echo ">>>>>>>>> enable nodejs18 <<<<<<<<<<"
 dnf module enable nodejs:18 -y
