@@ -76,8 +76,8 @@ func_nodejs(){
   echo -e "\e[35m>>>>>>>> install nodejs <<<<<<<<<\e[0m"
   dnf install nodejs -y &>>${log}
   func_exit_status
-  echo -e "\e[35m>>>>>>>> install dependencies <<<<<<<<<\e[0m"
   func_appprereq
+  echo -e "\e[35m>>>>>>>> install dependencies <<<<<<<<<\e[0m"
   npm install &>>${log}
   func_exit_status
   func_schema_setup
