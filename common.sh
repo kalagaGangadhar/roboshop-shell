@@ -24,6 +24,22 @@ func_systemd(){
   systemctl restart ${component} &>>${log}
 }
 
+func_schema_setup(){
+  if [ "${schema_type}" == "mongodb" ]; then
+    echo -e "\e[35m>>>>>>>> install mongodb shell <<<<<<<<<\e[0m"
+    dnf install mongodb-org-shell -y &>>${log}
+    echo -e "\e[35m>>>>>>>> load schema to mongodb <<<<<<<<<\e[0m"
+    mongo --host mongodb.groboshop.online </app/schema/${component}.js &>>${log}
+  fi
+
+  if [ "${schema_type}" == "mysql" ]; then
+    echo -e "\e[35m>>>>>>>> install mysql <<<<<<<<<\e[0m"
+    dnf install mysql -y
+    echo -e "\e[35m>>>>>>>> load schema <<<<<<<<<\e[0m"
+    mysql -h mysql.groboshop.online -uroot -pRoboShop@1 < /app/schema/${component}.sql
+  fi
+}
+
 func_nodejs(){
 
   echo -e "\e[35m>>>>>>>> create mongo repo <<<<<<<<<\e[0m"
@@ -37,10 +53,7 @@ func_nodejs(){
   echo -e "\e[35m>>>>>>>> install dependencies <<<<<<<<<\e[0m"
   func_appprereq
   npm install &>>${log}
-  echo -e "\e[35m>>>>>>>> install mongodb shell <<<<<<<<<\e[0m"
-  dnf install mongodb-org-shell -y &>>${log}
-  echo -e "\e[35m>>>>>>>> load schema to mongodb <<<<<<<<<\e[0m"
-  mongo --host mongodb.groboshop.online </app/schema/${component}.js &>>${log}
+  func_schema_setup
   func_systemd
 }
 
@@ -50,9 +63,9 @@ func_java(){
   func_appprereq
   echo -e "\e[35m>>>>>>>> install dependencies <<<<<<<<<\e[0m"
   mvn clean package
+  echo -e "\e[35m>>>>>>>> moving jar file <<<<<<<<<\e[0m"
   mv target/shipping-1.0.jar shipping.jar
-  dnf install mysql -y
-  mysql -h mysql.groboshop.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+  func_schema_setup
   func_systemd
 }
 
