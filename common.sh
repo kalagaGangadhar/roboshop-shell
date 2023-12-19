@@ -104,6 +104,7 @@ func_python(){
   dnf install python36 gcc python3-devel -y &>>${log}
   func_exit_status
   func_appprereq
+  sed -i "s/rabbitmq_app_passwd/${rabbitmq_app_passwd}/" /etc/systemd/system/${component}.service
   echo -e "\e[35m>>>>>>>> install dependencies <<<<<<<<<\e[0m"
   pip3.6 install -r requirements.txt &>>${log}
   func_exit_status
