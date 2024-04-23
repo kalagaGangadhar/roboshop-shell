@@ -23,7 +23,7 @@ func_apppreq(){
   mkdir /app &>>${log}
   func_exit_status
   echo -e "\e[36m>>>>>>>>>>>>>>>>> download ${component} service content <<<<<<<<<<<<<<<<<<\e[0m"
-  curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
+  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
   func_exit_status
   cd /app &>>${log}
   echo -e "\e[36m>>>>>>>>>>>>>>>>> unzip the content <<<<<<<<<<<<<<<<<<\e[0m"
