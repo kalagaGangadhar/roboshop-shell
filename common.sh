@@ -48,7 +48,7 @@ func_schema_setup() {
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>>>  Load User Schema  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/roboshop.log
-    mongo --host mongodb.rdevopsb72.online </app/schema/${component}.js &>>${log}
+    mongo --host mongodb.groboshop.online </app/schema/${component}.js &>>${log}
     func_exit_status
   fi
 
@@ -58,7 +58,7 @@ func_schema_setup() {
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
-    mysql -h mysql.rdevopsb72.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
+    mysql -h mysql.groboshop.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
     func_exit_status
   fi
 
