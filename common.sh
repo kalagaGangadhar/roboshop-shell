@@ -84,7 +84,7 @@ func_systemd
 }
 
 func_java(){
-  echo -e "\e[36m>>>>>>>>>>>>>>>>> instal maven <<<<<<<<<<<<<<<<<<\e[0m"
+  echo -e "\e[36m>>>>>>>>>>>>>>>>> install maven <<<<<<<<<<<<<<<<<<\e[0m"
   dnf install maven -y &>>${log}
   func_exit_status
   func_apppreq
@@ -98,11 +98,11 @@ func_java(){
 }
 
 func_python(){
-  echo -e "\e[36m>>>>>>>>>>>>>>>>> instal python <<<<<<<<<<<<<<<<<<\e[0m"
+  echo -e "\e[36m>>>>>>>>>>>>>>>>> install python <<<<<<<<<<<<<<<<<<\e[0m"
   dnf install python36 gcc python3-devel -y &>>${log}
   func_exit_status
   func_apppreq
-  sed -i "s/rabbitmq_app_password/${rabbitmq_app_password}" /etc/systemd/system/${component}.service
+  sed -i -e "s/rabbitmq_app_password/${rabbitmq_app_password}" /etc/systemd/system/${component}.service
   echo -e "\e[36m>>>>>>>>>>>>>>>>> install dependencies <<<<<<<<<<<<<<<<<<\e[0m"
   pip3.6 install -r requirements.txt &>>${log}
   func_exit_status
@@ -111,7 +111,7 @@ func_python(){
 }
 
 func_golang(){
-  echo -e "\e[36m>>>>>>>>>>>>>>>>> instal go lang <<<<<<<<<<<<<<<<<<\e[0m"
+  echo -e "\e[36m>>>>>>>>>>>>>>>>> install go lang <<<<<<<<<<<<<<<<<<\e[0m"
   dnf install golang -y &>>${log}
   func_exit_status
   func_apppreq
