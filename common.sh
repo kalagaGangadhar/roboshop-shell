@@ -69,16 +69,16 @@ func_nodejs(){
 echo -e "\e[36m>>>>>>>>>>>>>>>>> coping mongo repo file <<<<<<<<<<<<<<<<<<\e[0m"
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
 func_exit_status
-echo -e "\e[36m>>>>>>>>>>>>>>>>> instal nodejs <<<<<<<<<<<<<<<<<<\e[0m"
+echo -e "\e[36m>>>>>>>>>>>>>>>>> install nodejs <<<<<<<<<<<<<<<<<<\e[0m"
 dnf module disable nodejs -y &>>${log}
 dnf module enable nodejs:18 -y &>>${log}
 dnf install nodejs -y &>>${log}
 func_exit_status
-func
+func_apppreq
 echo -e "\e[36m>>>>>>>>>>>>>>>>> install dependencies <<<<<<<<<<<<<<<<<<\e[0m"
 npm install &>>${log}
 func_exit_status
-func_apppreq
+
 func_schema_setup
 func_systemd
 }
