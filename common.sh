@@ -72,8 +72,9 @@ func_nodejs(){
     cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
     func_exit_status
 
-    echo -e "\e[36m>>>>>>>>>>>>  Install NodeJS Repos  <<<<<<<<<<<<\e[0m"
-    curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log}
+    echo -e "\e[36m >>>>>>>> enable nodejs-18 <<<<<<<< \e[0m"
+    dnf module disable nodejs -y &>>${log}
+    dnf module enable nodejs:18 -y &>>${log}
    func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>>>  Install NodeJS  <<<<<<<<<<<<\e[0m"
