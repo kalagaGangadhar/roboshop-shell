@@ -127,5 +127,21 @@ func_exit_status
 func_systemd
 }
 
+func_golang(){
+  echo -e "\e[36m >>>>>>>> install golang <<<<<<<< \e[0m"
+  dnf install golang -y &>>${log}
+  func_exit_status
+
+  func_apppreq
+
+  echo -e "\e[36m >>>>>>>> install dependencies <<<<<<<< \e[0m"
+  go mod init dispatch &>>${log}
+  go get &>>${log}
+  go build &>>${log}
+  func_exit_status
+
+  func_systemd
+}
+
 
 
