@@ -20,7 +20,7 @@ rm -rf /app
 
 echo -e "\e[36m >>>>>>>> download content <<<<<<<< \e[0m"
 mkdir /app
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/{component}.zip &>>${log}
+curl -o /tmp/{component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}.zip &>>${log}
 cd /app
 
 echo -e "\e[36m >>>>>>>> extract content <<<<<<<< \e[0m"
