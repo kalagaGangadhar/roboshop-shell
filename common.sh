@@ -15,6 +15,9 @@ cp {component}.service /etc/systemd/system/{component}.service &>>${log}
 echo -e "\e[36m >>>>>>>> create user <<<<<<<< \e[0m"
 useradd roboshop &>>${log}
 
+echo -e "\e[36m >>>>>>>> remove old content <<<<<<<< \e[0m"
+rm -rf /app
+
 echo -e "\e[36m >>>>>>>> download content <<<<<<<< \e[0m"
 mkdir /app
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/{component}.zip &>>${log}
