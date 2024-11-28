@@ -1,5 +1,5 @@
 echo -e "\e[36m >>>>>>>>> copy Mongo-repo file <<<<<<<<< \e[0m"
-p mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 echo -e "\e[36m >>>>>>>> Install Mongodb <<<<<<<<<<< \e[0m"
 dnf install mongodb-org -y
 echo -e "\e[36m >>>>>>>> replace Host address <<<<<<<<<< \e[0m"
