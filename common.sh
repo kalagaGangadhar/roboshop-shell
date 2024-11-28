@@ -95,21 +95,37 @@ func_nodejs(){
 
 
 func_java(){
-echo -e "\e[36m >>>>>>>> install maven <<<<<<<< \e[0m"
-dnf install maven -y &>>${log}
+
+  echo -e "\e[36m >>>>>>>> install maven <<<<<<<< \e[0m"
+  dnf install maven -y &>>${log}
+  func_exit_status
+
+  func_apppreq
+
+  echo -e "\e[36m >>>>>>>> install dependencies  <<<<<<<< \e[0m"
+  mvn clean package &>>${log}
+  func_exit_status
+  mv target/${component}-1.0.jar ${component}.jar &>>${log}
+
+  func_schema_setup
+
+  func_systemd
+
+}
+
+func_python(){
+echo -e "\e[36m >>>>>>>> Install python <<<<<<<< \e[0m"
+dnf install python36 gcc python3-devel -y &>>${log}
 func_exit_status
 
 func_apppreq
 
-echo -e "\e[36m >>>>>>>> install dependencies  <<<<<<<< \e[0m"
-mvn clean package &>>${log}
+echo -e "\e[36m >>>>>>>> Install dependencies <<<<<<<< \e[0m"
+pip3.6 install -r requirements.txt &>>${log}
 func_exit_status
-mv target/shipping-1.0.jar shipping.jar &>>${log}
-
-func_schema_setup
 
 func_systemd
-
 }
+
 
 
