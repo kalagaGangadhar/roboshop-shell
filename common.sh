@@ -119,6 +119,7 @@ dnf install python36 gcc python3-devel -y &>>${log}
 func_exit_status
 
 func_apppreq
+sed -i "s/rabbitmq_app_password/${rabbitmq_app_password}/" /etc/systemd/system/${component}.service
 
 echo -e "\e[36m >>>>>>>> Install dependencies <<<<<<<< \e[0m"
 pip3.6 install -r requirements.txt &>>${log}
@@ -133,6 +134,7 @@ func_golang(){
   func_exit_status
 
   func_apppreq
+  sed -i "s/rabbitmq_app_password/${rabbitmq_app_password}/" /etc/systemd/system/${component}.service
 
   echo -e "\e[36m >>>>>>>> install dependencies <<<<<<<< \e[0m"
   go mod init dispatch &>>${log}
