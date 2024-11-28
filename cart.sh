@@ -1,3 +1,6 @@
+echo -e "\e[36m >>>>>>>> copy service file <<<<<<<< \e[0m"
+cp cart.service /etc/systemd/system/cart.service
+
 echo -e "\e[36m >>>>>>>> enable nodejs-18 <<<<<<<< \e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
